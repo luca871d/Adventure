@@ -6,17 +6,15 @@ public class UserInterface {
         Scanner sc = new Scanner(System.in);
         String input;
         //while (!exit){
-        input = sc.nextLine();
-        String[] wordInput = input.split(" ", 3);
-        switch (wordInput[0].toLowerCase()){
-            //missing case wordInput.len = 1
-            case "go" -> directions(wordInput[1].toLowerCase());
-            case "exit" -> System.out.println("exiting");
-            case "help" -> System.out.println("helping");
-            case "look" -> System.out.println("looking");
-            default -> System.out.println("X. Type \"help\" for help");
-        }
-
+            input = sc.nextLine();
+            String[] wordInput = input.split(" ", 3);
+            switch (wordInput[0].toLowerCase()){
+                case "go" -> directions(wordInput);
+                case "exit" -> System.out.println("exiting");
+                case "help" -> System.out.println("helping");
+                case "look" -> System.out.println("looking");
+                default -> System.out.println("X. Type \"help\" for help");
+            }
         //}
 
         //Test
@@ -26,7 +24,14 @@ public class UserInterface {
         }
     }
     //switch-case for directions
-    private void directions(String dir){
+    private void directions(String[] input){
+        String dir;
+        if (input.length > 1){
+            dir = input[1];
+        }
+        else {
+            dir = "invalid";
+        }
         switch (dir){
             case "north" -> System.out.println("going north");
             case "east" -> System.out.println("going east");
