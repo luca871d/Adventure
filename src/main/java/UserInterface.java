@@ -5,17 +5,18 @@ public class UserInterface {
         boolean exit = false;
         Scanner sc = new Scanner(System.in);
         String input;
-        //while (!exit){
+        while (!exit){
+            System.out.println("Enter next command");
             input = sc.nextLine();
             String[] wordInput = input.split(" ", 3);
             switch (wordInput[0].toLowerCase()){
                 case "go" -> directions(wordInput);
-                case "exit" -> System.out.println("exiting");
+                case "exit" -> exit = exiting();
                 case "help" -> System.out.println("helping");
                 case "look" -> lookAround(currentRoom);
                 default -> System.out.println("X. Type \"help\" for help");
             }
-        //}
+        }
     }
     //switch-case for directions
     private void directions(String[] input){
@@ -41,5 +42,9 @@ public class UserInterface {
         for (String detail: roomDetails){
             System.out.println(detail);
         }
+    }
+    public boolean exiting(){
+        System.out.println("exiting");
+        return true;
     }
 }
