@@ -22,16 +22,21 @@ public class Adventure {
         Room room8 = new Room("room 8", "desc 8", room5, null,room7 ,null);
         room7.setE(room8);
         room5.setS(room8);
-        Room room9 = new Room("room 9", "desc 9", room6, room8,null,null);
+        Room room9 = new Room("room 9", "desc 9", room6, null,room8,null);
         room6.setS(room9);
         room8.setE(room9);
 
         currentRoom = room1;
         UserInterface ui = new UserInterface();
-        ui.startUp(currentRoom);
-    }
-
-    public Room getCurrentRoom() {
-        return currentRoom;
+        char action = 'c';
+        while (action != 'x') {
+            action = ui.startUp(currentRoom);
+            switch (action){
+                case 'n' -> currentRoom = currentRoom.getN();
+                case 'e' -> currentRoom = currentRoom.getE();
+                case 'w' -> currentRoom = currentRoom.getW();
+                case 's' -> currentRoom = currentRoom.getS();
+            }
+        }
     }
 }

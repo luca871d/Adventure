@@ -32,4 +32,33 @@ public class Room {
     public void setS (Room room){
         s = room;
     }
+
+    public Room getN() {
+        return n;
+    }
+
+    public Room getE() {
+        return e;
+    }
+
+    public Room getW() {
+        return w;
+    }
+
+    public Room getS() {
+        return s;
+    }
+
+    public boolean nHasRoom(){
+        return (n != null);
+    }
+    public boolean eHasRoom(){
+        return (e != null);
+    }
+    public boolean wHasRoom(){
+        return (w != null);
+    }
+    public boolean sHasRoom(){
+        return (s != null);
+    }
 }
