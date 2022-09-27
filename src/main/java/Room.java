@@ -19,4 +19,17 @@ public class Room {
         String[] roomDetails = {name, description};
         return roomDetails;
     }
+
+    public void setN (Room room){
+        n = room;
+    }
+    public void setE (Room room){
+        e = room;
+    }
+    public void setW (Room room){
+        w = room;
+    }
+    public void setS (Room room){
+        s = room;
+    }
 }
