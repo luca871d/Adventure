@@ -21,6 +21,7 @@ public class UserInterface {
                     case "north" -> {
                         if (currentRoom.nHasRoom()) {
                             System.out.println("going north");
+                            lookAround(currentRoom);
                             playerChoice = 'n';
                         }
                         else {
@@ -30,6 +31,7 @@ public class UserInterface {
                     case "east" -> {
                         if (currentRoom.eHasRoom()) {
                             System.out.println("going east");
+                            lookAround(currentRoom);
                             playerChoice = 'e';
                         }
                         else {
@@ -39,6 +41,7 @@ public class UserInterface {
                     case "west" -> {
                         if (currentRoom.wHasRoom()) {
                             System.out.println("going west");
+                            lookAround(currentRoom);
                             playerChoice = 'w';
                         }
                         else {
@@ -48,6 +51,7 @@ public class UserInterface {
                     case "south" -> {
                         if (currentRoom.sHasRoom()) {
                             System.out.println("going south");
+                            lookAround(currentRoom);
                             playerChoice = 's';
                         }
                         else {
@@ -69,10 +73,8 @@ public class UserInterface {
     }
 
     private void lookAround(Room currentRoom){
-        System.out.println("looking around");
         String[] roomDetails = currentRoom.lookAround();
-        for (String detail: roomDetails){
-            System.out.println(detail);
-        }
+        System.out.println("You are in " + roomDetails[0]);
+        System.out.println(roomDetails[1]);
     }
 }
