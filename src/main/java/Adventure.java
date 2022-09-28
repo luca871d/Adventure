@@ -9,7 +9,10 @@ public class Adventure {
         char action = 'c';
         while (action != 'x') {
             action = ui.startUp(player.getCurrentRoom());
-            player.move(action);
         }
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 }

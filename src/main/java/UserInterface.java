@@ -7,64 +7,20 @@ public class UserInterface {
     public UserInterface (Adventure adventure){
         this.adventure = adventure;
     }
-    
+
     public char startUp(Room currentRoom){
         char playerChoice = 'c';
         String input;
         System.out.println("Enter next command");
         input = sc.nextLine();
-        String[] wordInput = input.split(" ", 3);
+        String[] wordInput = input.split(" ", 2);
         switch (wordInput[0].toLowerCase()){
             case "go" -> {
-                String dir;
-                if (wordInput.length > 1){
-                    dir = wordInput[1];
+                if (wordInput.length == 1){
+                    System.out.println("Go where?");
                 }
                 else {
-                    dir = "invalid";
-                }
-                switch (dir){
-                    case "north" -> {
-                        if (currentRoom.nHasRoom()) {
-                            System.out.println("going north");
-                            lookAround(currentRoom);
-                            playerChoice = 'n';
-                        }
-                        else {
-                            System.out.println("You cannot go that way");
-                        }
-                    }
-                    case "east" -> {
-                        if (currentRoom.eHasRoom()) {
-                            System.out.println("going east");
-                            lookAround(currentRoom);
-                            playerChoice = 'e';
-                        }
-                        else {
-                            System.out.println("You cannot go that way");
-                        }
-                    }
-                    case "west" -> {
-                        if (currentRoom.wHasRoom()) {
-                            System.out.println("going west");
-                            lookAround(currentRoom);
-                            playerChoice = 'w';
-                        }
-                        else {
-                            System.out.println("You cannot go that way");
-                        }
-                    }
-                    case "south" -> {
-                        if (currentRoom.sHasRoom()) {
-                            System.out.println("going south");
-                            lookAround(currentRoom);
-                            playerChoice = 's';
-                        }
-                        else {
-                            System.out.println("You cannot go that way");
-                        }
-                    }
-                    default -> System.out.println("unknown direction");
+                    adventure.getPlayer().move(wordInput[1]);
                 }
             }
             case "exit" -> {
