@@ -1,9 +1,15 @@
 import java.util.Scanner;
 
 public class UserInterface {
+    private Scanner sc = new Scanner(System.in);
+    private Adventure adventure;
+
+    public UserInterface (Adventure adventure){
+        this.adventure = adventure;
+    }
+    
     public char startUp(Room currentRoom){
         char playerChoice = 'c';
-        Scanner sc = new Scanner(System.in);
         String input;
         System.out.println("Enter next command");
         input = sc.nextLine();
