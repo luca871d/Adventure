@@ -1,49 +1,28 @@
 public class Player {
     private Room currentRoom;
 
-    public void move (String direction){
+    public boolean move (char direction){
+        Room requestedRoom = null;
         switch (direction){
-            case "north" -> {
-                if (currentRoom.nHasRoom()) {
-                    System.out.println("going north");
-                    currentRoom = currentRoom.getN();
-                    lookAround();
-                }
-                else {
-                    System.out.println("You cannot go that way");
-                }
+            case 'n' -> {
+                requestedRoom = currentRoom.getN();
             }
-            case "east" -> {
-                if (currentRoom.eHasRoom()) {
-                    System.out.println("going east");
-                    currentRoom = currentRoom.getE();
-                    lookAround();
-                }
-                else {
-                    System.out.println("You cannot go that way");
-                }
+            case 'e' -> {
+                requestedRoom = currentRoom.getE();
             }
-            case "west" -> {
-                if (currentRoom.wHasRoom()) {
-                    System.out.println("going west");
-                    currentRoom = currentRoom.getW();
-                    lookAround();
-                }
-                else {
-                    System.out.println("You cannot go that way");
-                }
+            case 'w' -> {
+                requestedRoom = currentRoom.getW();
             }
-            case "south" -> {
-                if (currentRoom.sHasRoom()) {
-                    System.out.println("going south");
-                    currentRoom = currentRoom.getS();
-                    lookAround();
-                }
-                else {
-                    System.out.println("You cannot go that way");
-                }
+            case 's' -> {
+                requestedRoom = currentRoom.getS();
             }
-            default -> System.out.println("unknown direction");
+        }
+        if (requestedRoom == null){
+            return false;
+        }
+        else {
+            currentRoom = requestedRoom;
+            return true;
         }
     }
 
@@ -53,11 +32,5 @@ public class Player {
 
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
-    }
-
-    private void lookAround(){
-        String[] roomDetails = currentRoom.lookAround();
-        System.out.println("You are in " + roomDetails[0]);
-        System.out.println(roomDetails[1]);
     }
 }

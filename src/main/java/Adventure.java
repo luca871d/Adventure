@@ -1,6 +1,5 @@
 public class Adventure {
-    private Room currentRoom;
-    private UserInterface ui = new UserInterface(this);
+    private UserInterface ui = new UserInterface();
     private Map map = new Map();
     private Player player = new Player();
 
@@ -8,11 +7,18 @@ public class Adventure {
         player.setCurrentRoom(map.mapCreation());
         char action = 'c';
         while (action != 'x') {
-            action = ui.startUp(player.getCurrentRoom());
+            action = ui.startUp();
+            switch (action){
+                case 'n','e','w','s' ->{
+                    if (player.move(action)){
+                        ui.lookAround(player.getCurrentRoom());
+                    }
+                    else {
+                        ui.cantMove();
+                    }
+                }
+                case 'l' -> ui.lookAround(player.getCurrentRoom());
+            }
         }
-    }
-
-    public Player getPlayer() {
-        return player;
     }
 }
