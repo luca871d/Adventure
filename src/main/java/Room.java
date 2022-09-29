@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Room {
     private String name;
     private String description;
@@ -5,6 +7,7 @@ public class Room {
     private Room e;
     private Room w;
     private Room s;
+    private ArrayList<Item> items = new ArrayList<Item>();
 
     public Room (String name, String description, Room n, Room e, Room w, Room s){
         this.name = name;
@@ -16,8 +19,19 @@ public class Room {
     }
 
     public String[] lookAround(){
-        String[] roomDetails = {name, description};
+        String[] roomDetails = new String[items.size() + 2];
+        roomDetails[0] = name;
+        roomDetails[1] = description;
+        int i = 0;
+        for (Item item: items){
+            roomDetails[i+2] = items.get(i).getName();
+            i++;
+        }
         return roomDetails;
+    }
+
+    public void addItem(Item item){
+        items.add(item);
     }
 
     public void setN (Room room){

@@ -18,6 +18,8 @@ public class Map {
         Room room9 = new Room("room 9", "desc 9", room6, null,room8,null);
         room6.setS(room9);
         room8.setE(room9);
+        room2.addItem(new Item("Shiny brass lamp", "lamp"));
+        room4.addItem(new Item("Metal rod", "rod"));
 
         return room1;
     }

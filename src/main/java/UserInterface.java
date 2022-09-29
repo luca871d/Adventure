@@ -41,8 +41,11 @@ public class UserInterface {
 
     public void lookAround(Room currentRoom){
         String[] roomDetails = currentRoom.lookAround();
-        System.out.println("You are in " + roomDetails[0]);
-        System.out.println(roomDetails[1]);
+        System.out.print("You are in ");
+        for (String detail: roomDetails){
+            System.out.println(detail);
+        }
+
     }
 
     public void cantMove(){
