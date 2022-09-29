@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -24,12 +25,21 @@ public class UserInterface {
                     }
                 }
             }
+            case "inventory" -> playerChoice = "i";
             case "take" -> {
                 if (wordInput.length == 1){
                     System.out.println("Take what?");
                 }
                 else {
                     playerChoice = "t " + wordInput[1].toLowerCase();
+                }
+            }
+            case "drop" -> {
+                if (wordInput.length == 1){
+                    System.out.println("Drop what?");
+                }
+                else {
+                    playerChoice = "d " + wordInput[1].toLowerCase();
                 }
             }
             case "exit" -> {
@@ -60,7 +70,19 @@ public class UserInterface {
         System.out.println("You cannot go that way");
     }
 
-    public void noItem(){
-        System.out.println("There is no such item");
+    public void noItem(String location){
+        System.out.println("There is no such item in " + location);
+    }
+
+    public void inventory(ArrayList<Item> items){
+        System.out.println("You are currently carrying:");
+        if (items.isEmpty()){
+            System.out.println("Nothing");
+        }
+        else {
+            for (Item item : items) {
+                System.out.println(item.getName());
+            }
+        }
     }
 }

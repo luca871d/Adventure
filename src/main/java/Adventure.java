@@ -18,10 +18,18 @@ public class Adventure {
                         ui.cantMove();
                     }
                 }
+                case 'i' -> ui.inventory(player.getInventory());
                 case 'l' -> ui.lookAround(player.getCurrentRoom());
                 case 't' -> {
-                    if (!player.takeItem(action.substring(2))){
-                        ui.noItem();
+                    boolean isItem = player.takeItem(action.substring(2));
+                    if (!isItem){
+                        ui.noItem("the room");
+                    }
+                }
+                case 'd' -> {
+                    boolean isItem = player.dropItem(action.substring(2));
+                    if (!isItem){
+                        ui.noItem("your inventory");
                     }
                 }
             }
