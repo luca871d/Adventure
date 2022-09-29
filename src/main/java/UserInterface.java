@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class UserInterface {
     private Scanner sc = new Scanner(System.in);
 
-    public char startUp(){
-        char playerChoice = 'c';
+    public String startUp(){
+        String playerChoice = "c";
         String input;
         System.out.println("Enter next command");
         input = sc.nextLine();
@@ -16,16 +16,24 @@ public class UserInterface {
                 }
                 else {
                     switch (wordInput[1].toLowerCase()) {
-                        case "north" -> playerChoice = 'n';
-                        case "east" -> playerChoice = 'e';
-                        case "west" -> playerChoice = 'w';
-                        case "south" -> playerChoice = 's';
+                        case "north" -> playerChoice = "n";
+                        case "east" -> playerChoice = "e";
+                        case "west" -> playerChoice = "w";
+                        case "south" -> playerChoice = "s";
                         default -> System.out.println("Unknown direction");
                     }
                 }
             }
+            case "take" -> {
+                if (wordInput.length == 1){
+                    System.out.println("Take what?");
+                }
+                else {
+                    playerChoice = "t " + wordInput[1].toLowerCase();
+                }
+            }
             case "exit" -> {
-                playerChoice = 'x';
+                playerChoice = "x";
                 System.out.println("exiting");
             }
             case "help" -> {
@@ -33,7 +41,7 @@ public class UserInterface {
                 System.out.println("Look: get description of current room");
                 System.out.println("Exit: exit game");
             }
-            case "look" -> playerChoice = 'l';
+            case "look" -> playerChoice = "l";
             default -> System.out.println("X. Type \"help\" for help");
         }
         return playerChoice;
@@ -50,5 +58,9 @@ public class UserInterface {
 
     public void cantMove(){
         System.out.println("You cannot go that way");
+    }
+
+    public void noItem(){
+        System.out.println("There is no such item");
     }
 }

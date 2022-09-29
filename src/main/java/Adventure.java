@@ -6,12 +6,12 @@ public class Adventure {
     public void startGame(){
         player.setCurrentRoom(map.mapCreation());
         ui.lookAround(player.getCurrentRoom());
-        char action = 'c';
-        while (action != 'x') {
+        String action = "c";
+        while (!action.equals("x")) {
             action = ui.startUp();
-            switch (action){
+            switch (action.charAt(0)){
                 case 'n','e','w','s' ->{
-                    if (player.move(action)){
+                    if (player.move(action.charAt(0))){
                         ui.lookAround(player.getCurrentRoom());
                     }
                     else {
@@ -19,6 +19,11 @@ public class Adventure {
                     }
                 }
                 case 'l' -> ui.lookAround(player.getCurrentRoom());
+                case 't' -> {
+                    if (!player.takeItem(action.substring(2))){
+                        ui.noItem();
+                    }
+                }
             }
         }
     }
