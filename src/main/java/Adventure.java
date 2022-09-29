@@ -5,6 +5,7 @@ public class Adventure {
 
     public void startGame(){
         player.setCurrentRoom(map.mapCreation());
+        ui.lookAround(player.getCurrentRoom());
         char action = 'c';
         while (action != 'x') {
             action = ui.startUp();

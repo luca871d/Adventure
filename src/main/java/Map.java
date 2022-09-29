@@ -20,6 +20,8 @@ public class Map {
         room8.setE(room9);
         room2.addItem(new Item("Shiny brass lamp", "lamp"));
         room4.addItem(new Item("Metal rod", "rod"));
+        room4.addItem(new Item("Food", "food"));
+        room4.addItem(new Item("Water", "water"));
 
         return room1;
     }

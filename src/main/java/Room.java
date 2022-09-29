@@ -62,4 +62,12 @@ public class Room {
     public Room getS() {
         return s;
     }
+
+    public ArrayList<Item> getItems(){
+        return items;
+    }
+
+    public void removeItem(int index){
+        items.remove(index);
+    }
 }

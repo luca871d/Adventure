@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Player {
     private Room currentRoom;
 
@@ -24,6 +26,19 @@ public class Player {
             currentRoom = requestedRoom;
             return true;
         }
+    }
+
+    public boolean takeItem(String requestedItem){
+        boolean itemFound = false;
+        ArrayList<Item> itemsInRoom = currentRoom.getItems();
+        for (Item item: itemsInRoom){
+            if (item.getShortName().equals(requestedItem.toLowerCase())){
+                int index = itemsInRoom.indexOf(item);
+                currentRoom.removeItem(index);
+                itemFound = true;
+            }
+        }
+        return itemFound;
     }
 
     public Room getCurrentRoom() {
