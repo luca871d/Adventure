@@ -34,6 +34,14 @@ public class UserInterface {
                     playerChoice = "t " + wordInput[1].toLowerCase();
                 }
             }
+            case "eat" -> {
+                if (wordInput.length == 1){
+                    System.out.println("Eat what?");
+                }
+                else {
+                    playerChoice = "p " + wordInput[1].toLowerCase(); // p for spis
+                }
+            }
             case "drop" -> {
                 if (wordInput.length == 1){
                     System.out.println("Drop what?");
@@ -88,6 +96,29 @@ public class UserInterface {
     }
 
     public void currentHealth(int health){
-        System.out.println("You currently have " + health + " health");
+        System.out.print("You currently have " + health + " health - ");
+        if (health >= 10){
+            System.out.println("You have good health, and are ready to fight");
+        }
+        else if (health > 6){
+            System.out.println("You have good health, but you are not ready to fight");
+        }
+        else if (health > 3){
+            System.out.println("You have bad health, and should proceed with caution");
+        }
+        else{
+            System.out.println("You are almost dead, you should eat something!");
+        }
+    }
+    public void noFood(){
+        System.out.println("There is no such near you to eat");
+    }
+
+    public void cantEat(){
+        System.out.println("You cannot eat that!");
+    }
+
+    public void ate(){
+        System.out.println("You ate it.");
     }
 }

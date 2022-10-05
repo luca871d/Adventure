@@ -59,6 +59,39 @@ public class Player {
         return itemFound;
     }
 
+    public Edible eatFood(String requestedItem){
+        Edible canEat = Edible.NOFOOD;
+        ArrayList<Item> itemsInRoom = currentRoom.getItems();
+        for (Item item: itemsInRoom){
+            if (item.getShortName().equals(requestedItem.toLowerCase())){
+                if (item instanceof Food){
+                    canEat = Edible.EDIBLE;
+                    health += ((Food) item).getHealthEffect();
+                    currentRoom.removeItem(itemsInRoom.indexOf(item));
+                }
+                else{
+                    canEat = Edible.ISITEM;
+                }
+                break;
+            }
+        }
+        if (canEat == Edible.NOFOOD){
+            for (Item item: inventory){
+                if (item.getShortName().equals(requestedItem.toLowerCase())){
+                    if (item instanceof Food) {
+                        canEat = Edible.EDIBLE;
+                        health += ((Food) item).getHealthEffect();
+                        inventory.remove(item);
+                    } else {
+                        canEat = Edible.ISITEM;
+                    }
+                    break;
+                }
+            }
+        }
+        return canEat;
+    }
+
     public Room getCurrentRoom() {
         return currentRoom;
     }

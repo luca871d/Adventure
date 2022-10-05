@@ -33,6 +33,17 @@ public class Adventure {
                     }
                 }
                 case 'h' -> ui.currentHealth(player.getHealth());
+                case 'p' -> {
+                    Edible canEat = player.eatFood(action.substring(2));
+                    switch (canEat) {
+                        case NOFOOD -> ui.noFood();
+                        case ISITEM -> ui.cantEat();
+                        case EDIBLE -> {
+                            ui.ate();
+                            ui.currentHealth(player.getHealth());
+                        }
+                    }
+                }
             }
         }
     }
