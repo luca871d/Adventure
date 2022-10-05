@@ -52,6 +52,7 @@ public class UserInterface {
                 System.out.println("Exit: exit game");
             }
             case "look" -> playerChoice = "l";
+            case "health" -> playerChoice = "h";
             default -> System.out.println("X. Type \"help\" for help");
         }
         return playerChoice;
@@ -84,5 +85,9 @@ public class UserInterface {
                 System.out.println(item.getName());
             }
         }
+    }
+
+    public void currentHealth(int health){
+        System.out.println("You currently have " + health + " health");
     }
 }

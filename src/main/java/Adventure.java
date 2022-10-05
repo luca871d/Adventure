@@ -32,6 +32,7 @@ public class Adventure {
                         ui.noItem("your inventory");
                     }
                 }
+                case 'h' -> ui.currentHealth(player.getHealth());
             }
         }
     }

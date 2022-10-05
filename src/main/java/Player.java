@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Player {
     private Room currentRoom;
     private ArrayList<Item> inventory = new ArrayList<Item>();
+    private int health = 10; //Start health
 
     public boolean move (char direction){
         Room requestedRoom = null;
@@ -68,5 +69,9 @@ public class Player {
 
     public ArrayList<Item> getInventory(){
         return inventory;
+    }
+
+    public int getHealth() {
+        return health;
     }
 }

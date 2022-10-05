@@ -2,6 +2,8 @@ public class Item{
     private String name;
     private String shortName;
 
+    public Item(){
+    }
     public Item(String name, String shortName){
         this.name = name;
         this.shortName = shortName;
