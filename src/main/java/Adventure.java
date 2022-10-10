@@ -44,6 +44,14 @@ public class Adventure {
                         }
                     }
                 }
+                case EQUIP -> {
+                    Usable canEquip = player.equip(action.getPlayerChoiceItem());
+                    switch (canEquip) {
+                        case NOITEM -> ui.noItem("your inventory");
+                        case HASITEM -> ui.cantEquip();
+                        case USABLE -> ui.equip();
+                    }
+                }
             }
         }
     }

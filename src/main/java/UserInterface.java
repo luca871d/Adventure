@@ -45,6 +45,15 @@ public class UserInterface {
                     playerChoiceItem = wordInput[1].toLowerCase();
                 }
             }
+            case "equip" -> {
+                if (wordInput.length == 1){
+                    System.out.println("Equip what?");
+                }
+                else {
+                    playerChoice = PlayerChoice.EQUIP;
+                    playerChoiceItem = wordInput[1].toLowerCase();
+                }
+            }
             case "drop" -> {
                 if (wordInput.length == 1){
                     System.out.println("Drop what?");
@@ -124,5 +133,13 @@ public class UserInterface {
 
     public void ate(){
         System.out.println("You ate it.");
+    }
+
+    public void cantEquip(){
+        System.out.println("You cannot equip that");
+    }
+
+    public void equip(){
+        System.out.println("You have equipped a weapon");
     }
 }

@@ -10,5 +10,6 @@ enum PlayerChoice {
     DROP,
     EXIT,
     LOOK,
-    HEALTH
+    HEALTH,
+    EQUIP
 }
