@@ -4,8 +4,9 @@ import java.util.Scanner;
 public class UserInterface {
     private Scanner sc = new Scanner(System.in);
 
-    public String startUp(){
-        String playerChoice = "c";
+    public Action startUp(){
+        PlayerChoice playerChoice = PlayerChoice.CONTINUE;
+        String playerChoiceItem = "";
         String input;
         System.out.println("Enter next command");
         input = sc.nextLine();
@@ -17,21 +18,22 @@ public class UserInterface {
                 }
                 else {
                     switch (wordInput[1].toLowerCase()) {
-                        case "north" -> playerChoice = "n";
-                        case "east" -> playerChoice = "e";
-                        case "west" -> playerChoice = "w";
-                        case "south" -> playerChoice = "s";
+                        case "north" -> playerChoice = PlayerChoice.NORTH;
+                        case "east" -> playerChoice = PlayerChoice.EAST;
+                        case "west" -> playerChoice = PlayerChoice.WEST;
+                        case "south" -> playerChoice = PlayerChoice.SOUTH;
                         default -> System.out.println("Unknown direction");
                     }
                 }
             }
-            case "inventory" -> playerChoice = "i";
+            case "inventory" -> playerChoice = PlayerChoice.INVENTORY;
             case "take" -> {
                 if (wordInput.length == 1){
                     System.out.println("Take what?");
                 }
                 else {
-                    playerChoice = "t " + wordInput[1].toLowerCase();
+                    playerChoice = PlayerChoice.TAKE;
+                    playerChoiceItem = wordInput[1].toLowerCase();
                 }
             }
             case "eat" -> {
@@ -39,7 +41,8 @@ public class UserInterface {
                     System.out.println("Eat what?");
                 }
                 else {
-                    playerChoice = "p " + wordInput[1].toLowerCase(); // p for spis
+                    playerChoice = PlayerChoice.EAT;
+                    playerChoiceItem = wordInput[1].toLowerCase();
                 }
             }
             case "drop" -> {
@@ -47,11 +50,12 @@ public class UserInterface {
                     System.out.println("Drop what?");
                 }
                 else {
-                    playerChoice = "d " + wordInput[1].toLowerCase();
+                    playerChoice = PlayerChoice.DROP;
+                    playerChoiceItem = wordInput[1].toLowerCase();
                 }
             }
             case "exit" -> {
-                playerChoice = "x";
+                playerChoice = PlayerChoice.EXIT;
                 System.out.println("exiting");
             }
             case "help" -> {
@@ -59,11 +63,11 @@ public class UserInterface {
                 System.out.println("Look: get description of current room");
                 System.out.println("Exit: exit game");
             }
-            case "look" -> playerChoice = "l";
-            case "health" -> playerChoice = "h";
+            case "look" -> playerChoice = PlayerChoice.LOOK;
+            case "health" -> playerChoice = PlayerChoice.HEALTH;
             default -> System.out.println("X. Type \"help\" for help");
         }
-        return playerChoice;
+        return new Action(playerChoice,playerChoiceItem);
     }
 
     public void lookAround(Room currentRoom){

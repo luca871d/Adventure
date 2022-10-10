@@ -5,19 +5,19 @@ public class Player {
     private ArrayList<Item> inventory = new ArrayList<Item>();
     private int health = 10; //Start health
 
-    public boolean move (char direction){
+    public boolean move (PlayerChoice direction){
         Room requestedRoom = null;
         switch (direction){
-            case 'n' -> {
+            case NORTH -> {
                 requestedRoom = currentRoom.getN();
             }
-            case 'e' -> {
+            case EAST -> {
                 requestedRoom = currentRoom.getE();
             }
-            case 'w' -> {
+            case WEST -> {
                 requestedRoom = currentRoom.getW();
             }
-            case 's' -> {
+            case SOUTH -> {
                 requestedRoom = currentRoom.getS();
             }
         }
