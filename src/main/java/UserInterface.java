@@ -45,6 +45,9 @@ public class UserInterface {
                     playerChoiceItem = wordInput[1].toLowerCase();
                 }
             }
+            case "attack" -> {
+                playerChoice = PlayerChoice.ATTACK;
+            }
             case "equip" -> {
                 if (wordInput.length == 1){
                     System.out.println("Equip what?");
@@ -141,5 +144,13 @@ public class UserInterface {
 
     public void equip(){
         System.out.println("You have equipped a weapon");
+    }
+
+    public void cantAttack(){
+        System.out.println("You do not have a weapon equipped that can attack");
+    }
+
+    public void emptyAttack(){
+        System.out.println("You attack the empty room");
     }
 }

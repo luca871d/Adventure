@@ -52,6 +52,13 @@ public class Adventure {
                         case USABLE -> ui.equip();
                     }
                 }
+                case ATTACK -> {
+                    switch (player.attack()){
+                        case NOITEM -> ui.cantAttack();
+                        case HASITEM -> ui.emptyAttack();
+                        case USABLE -> System.out.println("Enemy"); //When enemy
+                    }
+                }
             }
         }
     }

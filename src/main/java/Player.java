@@ -4,7 +4,7 @@ public class Player {
     private Room currentRoom;
     private ArrayList<Item> inventory = new ArrayList<Item>();
     private int health = 10; //Start health
-    private Item equippedWeapon;
+    private Weapon equippedWeapon;
 
     public boolean move (PlayerChoice direction){
         Room requestedRoom = null;
@@ -98,7 +98,7 @@ public class Player {
             if (item.getShortName().equals(requestedItem.toLowerCase())){
                 if (item instanceof Weapon) {
                     canEquip = Usable.USABLE;
-                    equippedWeapon = item;
+                    equippedWeapon = (Weapon) item;
                     }
                 else {
                     canEquip = Usable.HASITEM;
@@ -123,5 +123,21 @@ public class Player {
 
     public int getHealth() {
         return health;
+    }
+
+    public Usable attack(){
+        if (equippedWeapon != null){
+            //Enemy == Usable
+            if (equippedWeapon.canUse()){
+                equippedWeapon.use();
+                return Usable.HASITEM;
+            }
+            else {
+                return Usable.NOITEM;
+            }
+        }
+        else {
+            return Usable.NOITEM;
+        }
     }
 }
