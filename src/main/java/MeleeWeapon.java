@@ -1,6 +1,6 @@
 public class MeleeWeapon extends Weapon{
-    public MeleeWeapon (String name, String shortName) {
-        super(name,shortName);
+    public MeleeWeapon (String name, String shortName, int damage) {
+        super(name,shortName,damage);
     }
 
     public boolean canUse() {

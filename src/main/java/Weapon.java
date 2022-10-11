@@ -1,9 +1,14 @@
 abstract public class Weapon extends Item {
-    public Weapon (String name, String shortName){
+    private int damage;
+    public Weapon (String name, String shortName, int damage){
         super(name, shortName);
+        this.damage = damage;
     }
 
     abstract public boolean canUse();
     abstract public int getAmmo();
     abstract public void use();
+    public int getDamage(){
+        return damage;
+    }
 }

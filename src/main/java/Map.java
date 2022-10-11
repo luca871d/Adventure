@@ -22,8 +22,8 @@ public class Map {
         room4.addItem(new Food("Food", "food", 3));
         room4.addItem(new Food("Water", "water", 0));
         room7.addItem(new Food("Green carrot", "carrot", -2));
-        room1.addItem(new MeleeWeapon("Big stick", "stick"));
-        room2.addItem(new RangedWeapon("Pistol", "pistol", 2));
+        room1.addItem(new MeleeWeapon("Big stick", "stick", 4));
+        room2.addItem(new RangedWeapon("Pistol", "pistol", 3, 2));
 
         return room1;
     }
