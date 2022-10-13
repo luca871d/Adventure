@@ -8,6 +8,7 @@ public class Room {
     private Room w;
     private Room s;
     private ArrayList<Item> items = new ArrayList<Item>();
+    private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 
     public Room (String name, String description, Room n, Room e, Room w, Room s){
         this.name = name;
@@ -32,6 +33,10 @@ public class Room {
 
     public void addItem(Item item){
         items.add(item);
+    }
+
+    public void addEnemy(Enemy enemy){
+        enemies.add(enemy);
     }
 
     public void setN (Room room){
