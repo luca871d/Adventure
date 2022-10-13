@@ -5,21 +5,21 @@ public class Adventure {
 
     public void startGame(){
         player.setCurrentRoom(map.mapCreation());
-        ui.lookAround(player.getCurrentRoom());
+        ui.lookAround(player.lookAround(), player.lookAtEnemies());
         Action action = new Action(PlayerChoice.CONTINUE, null);
-        while (action.getPlayerChoice() != PlayerChoice.EXIT) {
+        while (action.getPlayerChoice() != PlayerChoice.EXIT || player.getHealth() <= 0) {
             action = ui.startUp();
             switch (action.getPlayerChoice()){
                 case NORTH,EAST,WEST,SOUTH ->{
                     if (player.move(action.getPlayerChoice())){
-                        ui.lookAround(player.getCurrentRoom());
+                        ui.lookAround(player.lookAround(), player.lookAtEnemies());
                     }
                     else {
                         ui.cantMove();
                     }
                 }
                 case INVENTORY -> ui.inventory(player.getInventory());
-                case LOOK -> ui.lookAround(player.getCurrentRoom());
+                case LOOK -> ui.lookAround(player.lookAround(), player.lookAtEnemies());
                 case TAKE -> {
                     boolean isItem = player.takeItem(action.getPlayerChoiceItem());
                     if (!isItem){
@@ -56,10 +56,17 @@ public class Adventure {
                     switch (player.attack()){
                         case NOITEM -> ui.cantAttack();
                         case HASITEM -> ui.emptyAttack();
-                        case USABLE -> System.out.println("Enemy"); //When enemy
+                        case USABLE -> ui.attack();
+                        case DEFEATED -> ui.defeated();
                     }
                 }
             }
+        }
+        if (action.getPlayerChoice() == PlayerChoice.EXIT){
+            ui.exit();
+        }
+        else {
+            ui.gameOver();
         }
     }
 }

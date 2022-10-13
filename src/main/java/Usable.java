@@ -1,5 +1,6 @@
 enum Usable {
     NOITEM,
     HASITEM,
-    USABLE
+    USABLE,
+    DEFEATED
 }

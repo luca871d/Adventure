@@ -24,8 +24,8 @@ public class Map {
         room7.addItem(new Food("Green carrot", "carrot", -2));
         room1.addItem(new MeleeWeapon("Big stick", "stick", 4));
         room2.addItem(new RangedWeapon("Pistol", "pistol", 3, 2));
-        room5.addEnemy(new Enemy(new MeleeWeapon("Shiny axe", "axe", 3), 10));
-        room6.addEnemy(new Enemy(new MeleeWeapon("Balloon animal", "balloon", 1), 3));
+        room5.addEnemy(new Enemy("Big orc","An orc with a shiny axe is guarding the treasures of the room",new MeleeWeapon("Shiny axe", "axe", 3), 10));
+        room6.addEnemy(new Enemy("Angry mime","You run into an angry mime holding a balloon animal",new MeleeWeapon("Balloon animal", "balloon", 1), 3));
         return room1;
     }
 }

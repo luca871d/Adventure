@@ -68,7 +68,6 @@ public class UserInterface {
             }
             case "exit" -> {
                 playerChoice = PlayerChoice.EXIT;
-                System.out.println("exiting");
             }
             case "help" -> {
                 System.out.println("Go north/east/west/south: move to another room");
@@ -82,13 +81,19 @@ public class UserInterface {
         return new Action(playerChoice,playerChoiceItem);
     }
 
-    public void lookAround(Room currentRoom){
-        String[] roomDetails = currentRoom.lookAround();
+    public void lookAround(String[] lookAround, String[] lookAtEnemies){
         System.out.print("You are in ");
-        for (String detail: roomDetails){
+        for (String detail: lookAround){
             System.out.println(detail);
         }
-
+        for (int i = 0; i < lookAtEnemies.length; i++){
+            if (i % 2 == 0){
+                System.out.print(lookAtEnemies[i] + ": ");
+            }
+            else {
+                System.out.println(lookAtEnemies[i]);
+            }
+        }
     }
 
     public void cantMove(){
@@ -152,5 +157,22 @@ public class UserInterface {
 
     public void emptyAttack(){
         System.out.println("You attack the empty room");
+    }
+
+    public void exit(){
+        System.out.println("Exiting");
+    }
+
+    public void gameOver(){
+        System.out.println("You have died - GAME OVER");
+    }
+
+    public void attack (){
+        System.out.println("You attack the enemy - It attacks you back");
+    }
+
+    public void defeated(){
+        System.out.println("You attack the enemy");
+        System.out.println("It has been defeated and has left its weapon behind");
     }
 }

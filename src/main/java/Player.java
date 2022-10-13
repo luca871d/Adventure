@@ -127,10 +127,22 @@ public class Player {
 
     public Usable attack(){
         if (equippedWeapon != null){
-            //Enemy == Usable
             if (equippedWeapon.canUse()){
                 equippedWeapon.use();
-                return Usable.HASITEM;
+                if (currentRoom.isEnemy()){
+                    Enemy currentEnemy = currentRoom.getEnemy();
+                    if (currentEnemy.hit(equippedWeapon.getDamage())){
+                        currentRoom.deadEnemy();
+                        return Usable.DEFEATED;
+                    }
+                    else {
+                        health -= currentEnemy.attack();
+                        return Usable.USABLE;
+                    }
+                }
+                else {
+                    return Usable.HASITEM;
+                }
             }
             else {
                 return Usable.NOITEM;
@@ -139,5 +151,13 @@ public class Player {
         else {
             return Usable.NOITEM;
         }
+    }
+
+    public String[] lookAround (){
+        return currentRoom.lookAround();
+    }
+
+    public String[] lookAtEnemies(){
+        return currentRoom.lookAtEnemies();
     }
 }

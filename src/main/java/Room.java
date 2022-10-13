@@ -30,6 +30,17 @@ public class Room {
         }
         return roomDetails;
     }
+    public String[] lookAtEnemies(){
+        String[] roomDetails = new String[enemies.size() * 2];
+        int i = 0;
+        for (int j = 0; j < enemies.size() * 2 - 1; j++){
+            roomDetails[i] = enemies.get(j).getName();
+            i++;
+            roomDetails[i] = enemies.get(j).getDesc();
+            i++;
+        }
+        return roomDetails;
+    }
 
     public void addItem(Item item){
         items.add(item);
@@ -74,5 +85,22 @@ public class Room {
 
     public void removeItem(int index){
         items.remove(index);
+    }
+
+    public boolean isEnemy (){
+        return !enemies.isEmpty();
+    }
+
+    public Enemy getEnemy(){
+        return enemies.get(0);
+    }
+
+    public void setEnemy(Enemy enemy){
+        enemies.set(0, enemy);
+    }
+
+    public void deadEnemy(){
+        items.add(enemies.get(0).getWeapon());
+        enemies.remove(0);
     }
 }
