@@ -7,10 +7,6 @@ public class MeleeWeapon extends Weapon{
         return true;
     }
 
-    public int getAmmo() {
-        return -1;
-    }
-
     public void use(){
 
     }

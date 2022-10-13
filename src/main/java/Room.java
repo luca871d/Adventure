@@ -95,10 +95,6 @@ public class Room {
         return enemies.get(0);
     }
 
-    public void setEnemy(Enemy enemy){
-        enemies.set(0, enemy);
-    }
-
     public void deadEnemy(){
         items.add(enemies.get(0).getWeapon());
         enemies.remove(0);

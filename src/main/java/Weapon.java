@@ -6,7 +6,6 @@ abstract public class Weapon extends Item {
     }
 
     abstract public boolean canUse();
-    abstract public int getAmmo();
     abstract public void use();
     public int getDamage(){
         return damage;

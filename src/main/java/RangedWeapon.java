@@ -9,10 +9,6 @@ public class RangedWeapon extends Weapon{
         return (ammo > 0);
     }
 
-    public int getAmmo() {
-        return ammo;
-    }
-
     public void use(){
         ammo -= 1;
     }
